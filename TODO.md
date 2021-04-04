@@ -26,12 +26,12 @@
       - [ ] Email validation
       - [ ] Password requirements
     - [ ] Series
-      - [ ] Add series
+      - [X] Add series
       - [ ] Delete series
       - [ ] Modify series
       - [ ] Add series to ranking
     - [ ] Ranking
-      - [ ] Make ranking list
+      - [X] Make ranking list
       - [ ] Add items to ranking
       - [ ] Modify ranking
       - [ ] Remove items from ranking
