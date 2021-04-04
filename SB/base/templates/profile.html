@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class="row justify-content-center">
+        <div class="column col-12">
+            <h1 class="jyppytext">Your account </h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="column col-12 col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="jyppytext">Account details</h4>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <p><strong>Username: </strong>{{ current_user.username }}</p>
+                        <p><strong>Email: </strong>{{ current_user.email }}</p>
+                    </div>
+                    <a href="/logout" class="card-link">Log-out</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

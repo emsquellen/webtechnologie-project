@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}<title>Index</title>{% endblock %}
+{% block script %}{{ super() }}{% endblock %}
+{% block style %}{{ super() }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        <div class="column col-9 col-mx-auto" id="rankinglisttitle">
+            <h3 class="text-center">{{ title }}</h3>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-6 col-mx-auto">
+            <div id="rankinglistdescription">
+                <p class="text-center">id: {{ rankinglist_id }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-3 col-mx-auto">
+            <p class="text-center">by: <i>{{ creator }}</i></p>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-9 col-mx-auto">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>name</th>
+                        <th>genre</th>
+                        <th>year</th>
+                        <th>amount of seasons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in range(length) %}
+                    <tr>
+                        <td>{{ index[x] }}</td>
+                        <td>{{ series[x][1] }}</td>
+                        <td>{{ series[x][4] }}</td>
+                        <td>{{ series[x][3] }}</td>
+                        <td>{{ series[x][5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

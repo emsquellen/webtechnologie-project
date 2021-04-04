@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}<title>Index</title>{% endblock %}
+{% block script %}{{ super() }}{% endblock %}
+{% block style %}{{ super() }}{% endblock %}
+
+{% block content %}
+<p>{{ id }}</p><br>
+<h1>{{ name }}</h1><br>
+<div>
+    {{ description }}
+    {{ year }}
+    {{ genre }}
+    {{ seasons }}
+    {{ added_by }}
+</div>
+{% endblock %}

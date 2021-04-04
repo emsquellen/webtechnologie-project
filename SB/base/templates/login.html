@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class="row justify-content-center">
+        <div class="column col-12">
+            <h1>Login</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="column col-12">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group row">
+                    <label for="text" class="col-4 col-form-label">Username</label>
+                    <div class="col-8">
+                        <div class="input-group">
+                            {{ form.email() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="text1" class="col-4 col-form-label">Wachtwoord</label>
+                    <div class="col-8">
+                        <div class="input-group">
+                            {{ form.password() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-4 col-8">
+                        <div class="btn btn-primary">{{ form.submit() }}</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
