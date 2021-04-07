@@ -5,104 +5,21 @@
 
 {% block content %}
 <div class="columns">
+    {% for title, description, id in titlelist %}
     <div class="column col-2">
         <div class="card">
             <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
+                <div class="card-title h5">{{ title }}</div>
             </div>
             <div class="card-body">
-                ...
+                {{ description }}
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary">...</button>
+                <a class="btn btn-primary" href="./{{ id }}">Go to series</a>
             </div>
         </div>
     </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
-    <div class="column col-2">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title h5">...</div>
-                <div class="card-subtitle text-gray">...</div>
-            </div>
-            <div class="card-body">
-                ...
-            </div>
-            <div class="card-footer">
-                <button class="btn btn-primary">...</button>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

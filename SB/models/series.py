@@ -43,3 +43,15 @@ class Series(db.Model):
             data.genre,
             data.seasons,
             data.added_by,]
+
+    @classmethod
+    def get_index(cls):
+        L = []
+        data = cls.query.all()
+        for item in data:
+            itemlist = []
+            itemlist.append(item.name)
+            itemlist.append(item.description)
+            itemlist.append(item.id)
+            L.append(itemlist)
+        return L

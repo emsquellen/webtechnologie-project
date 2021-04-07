@@ -12,7 +12,8 @@ blueprint = Blueprint(
 @blueprint.route("/", methods=['GET', 'POST'])
 @blueprint.route("/index", methods=['GET', 'POST'])
 def index():
-    return render_template('series_index.html')
+    titlelist = Series.get_index()
+    return render_template('series_index.html', titlelist=titlelist)
 
 
 @blueprint.route("/<int:series_id>", methods=['GET', 'POST'])
