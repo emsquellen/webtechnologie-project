@@ -4,13 +4,16 @@
 {% block style %}{{ super() }}{% endblock %}
 
 {% block content %}
-<p>{{ id }}</p><br>
-<h1>{{ name }}</h1><br>
-<div>
-    {{ description }}
-    {{ year }}
-    {{ genre }}
-    {{ seasons }}
-    {{ added_by }}
+<div class="col-9 col-md-12 col-mx-auto">
+    <h1>{{ name }} <small class="label">{{id}}</small></h1>
+    <span class="chip">{{ year }}</span><span class="chip">{{ genre }}</span>
+    <div>
+        <blockquote>
+            <p>{{ description }}</p>
+        </blockquote>
+        {{ seasons }}
+        {{ added_by }}
+    </div>
 </div>
+
 {% endblock %}

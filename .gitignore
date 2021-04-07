@@ -80,4 +80,3 @@ pdocs/_build/
 
 # Cython debug symbols
 cython_debug/
-SB/data.sqlite

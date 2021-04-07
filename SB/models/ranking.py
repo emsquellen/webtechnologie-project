@@ -3,13 +3,13 @@ from datetime import datetime
 from .series import Series
 
 class Rankinglist(db.Model):
-    __tablename__ = 'ranklist'
+    __tablename__ = 'rankinglist'
 
-    rankinglist_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(64), unique=True, index=True)
     creator = db.Column(db.Integer, db.ForeignKey('users.id'))
     date_added = db.Column(db.DateTime)
-    contents = db.relationship('RankinglistItem')
+    contents = db.relationship('RankinglistItem', backref="ranklist")
 
     def __init__(self, title, creator):
         self.title = title
@@ -30,7 +30,7 @@ class RankinglistItem(db.Model):
     __tablename__ = 'rankinglist_item'
 
     rankinglist_id = db.Column(db.Integer, db.ForeignKey(
-                           'ranklist.rankinglist_id'), primary_key=True)
+                           'rankinglist.id'), primary_key=True)
     series = db.Column(db.Integer, db.ForeignKey(
                        'series.id'), primary_key=True)
     index = db.Column(db.Integer)
