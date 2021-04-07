@@ -3,7 +3,7 @@ from datetime import datetime
 from .series import Series
 
 class Rankinglist(db.Model):
-    __tablename__ = 'rankinglist'
+    __tablename__ = 'ranklist'
 
     rankinglist_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(64), unique=True, index=True)
@@ -30,7 +30,7 @@ class RankinglistItem(db.Model):
     __tablename__ = 'rankinglist_item'
 
     rankinglist_id = db.Column(db.Integer, db.ForeignKey(
-                           'rankinglist.rankinglist_id'), primary_key=True)
+                           'ranklist.rankinglist_id'), primary_key=True)
     series = db.Column(db.Integer, db.ForeignKey(
                        'series.id'), primary_key=True)
     index = db.Column(db.Integer)

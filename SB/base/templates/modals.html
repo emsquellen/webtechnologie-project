@@ -1,0 +1,158 @@
+<div class="modal" id="register_m">
+    <a href="#close" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Register</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <div class="columns">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class=flashes>
+                        {% for category, message in messages %}
+                        <div class="toast toast-{{ category }}">
+                            {{ message }}
+                            <button class="btn btn-clear float-right"></button>>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="columns">
+                    <div class="column col-12 col-mx-auto">
+                        <div class="form-horizontal">
+                            <form method="POST">
+                                {{ register_form.hidden_tag() }}
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ register_form.email.label(class="form-label", id="register_email") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ register_form.email(class="form-input", id="register_email_label") }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ register_form.username.label(class="form-label", id="register_username_label") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ register_form.username(class="form-input", id="register_username") }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ register_form.password.label(class="form-label", id="register_password_label") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ register_form.password(class="form-input", id="register_password") }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ register_form.pass_confirm.label(class="form-label", id="register_passconf_label") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ register_form.pass_confirm(class="form-input", id="register_passconf") }}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                {{ register_form.submit(class="btn btn-primary", id=" ") }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="login_m">
+    <a href="#close" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container">
+        <div class="modal-header">
+            <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h5">Login</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <div class="columns">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class=flashes>
+                        {% for category, message in messages %}
+                        <div class="toast toast-{{ category }}">
+                            {{ message }}
+                            <button class="btn btn-clear float-right"></button>>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="columns">
+                    <div class="column col-12 col-mx-auto">
+                        <div class="form-horizontal">
+                            <form method="POST">
+                                {{ login_form.hidden_tag() }}
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ login_form.email.label(class="form-label", id=" ") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ login_form.email(class="form-input", id=" ") }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-3 col-sm-12">
+                                        {{ login_form.password.label(class="form-label", id="login_") }}
+                                    </div>
+                                    <div class="col-9 col-sm-12">
+                                        {{ login_form.password(class="form-input", id="login_password") }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-switch">
+                                        <input id="checkbox_pw" type="checkbox">
+                                        <i class="form-icon"></i> Show password
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                {{ login_form.submit(class="btn btn-primary", id="login_submit") }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('a[aria-label="Close"]').forEach((el) => {
+        el.addEventListener('click', () => {
+            document.getElementById("register_m").classList.remove("active");
+            document.getElementById("login_m").classList.remove("active");
+        })
+    })
+    document.querySelector("#checkbox_pw").addEventListener("change", function () {
+            var a = document.getElementById("login_password");
+            if (this.checked) {
+                a.type = "text";
+            } else {
+                a.type = "password";
+            }
+        });
+
+    function activate_modal(modal){
+        document.getElementById(modal).classList.add("active");
+    }
+</script>

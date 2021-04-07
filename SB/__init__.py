@@ -4,12 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
+app = None
 db = None
 login_manager = LoginManager()
 
 
 def create_app():
-
+    global app
     app = Flask(__name__,
                 template_folder="base/templates",
                 static_folder="base/static")

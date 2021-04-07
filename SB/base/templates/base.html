@@ -23,6 +23,7 @@
     {% if current_user.is_authenticated %}
     {% include 'navbar_loggedin.html' %}
     {% else %}
+    {% include 'modals.html' %}
     {% include 'navbar_logout.html' %}
     {% endif %}
     {% with messages = get_flashed_messages(with_categories=true) %}
