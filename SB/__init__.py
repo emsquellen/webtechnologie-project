@@ -31,6 +31,7 @@ def create_app():
     login_manager.login_view = "secure.login"
 
     from SB.views import base, secure, series, ranking
+    db.create_all()
 
     app.register_blueprint(base.base)
     app.register_blueprint(secure.blueprint)

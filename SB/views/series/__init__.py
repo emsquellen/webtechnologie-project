@@ -1,7 +1,8 @@
 from flask import render_template, Blueprint, Markup, flash
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField, TextAreaField, validators, SelectField, FileField
 from SB.models.series import Series
+from SB.models import User
 from flask_login import login_required, current_user
 from SB import db
 
@@ -20,6 +21,7 @@ def index():
 def info_page(series_id):
     id, name, description, year, genre, seasons, added_by = Series.get_data(
         id=series_id)
+    id = User.get_username(id)
 
     return render_template('series.html',
                            id=id,
@@ -33,11 +35,63 @@ def info_page(series_id):
 
 class SeriesAddForm(FlaskForm):
 
-    name = StringField('Title')
-    description = StringField('Description')
-    year = IntegerField('Year of release')
-    genre = StringField('Genre')
-    seasons = IntegerField('Amount of seasons')
+    name = StringField('Title', validators=[
+                       validators.DataRequired("Title is required")])
+    img = FileField('Image')
+    description = TextAreaField('Description', validators=[
+                                validators.DataRequired("Please provide a description")])
+    year = IntegerField('Year of release', validators=[
+                        validators.NumberRange(1800, 2023, "Pleas enter a year")])
+    genre = SelectField(u'genre', choices=["action series",
+                                                          "adventure series",
+                                                          "animated series",
+                                                          "anthology series",
+                                                          "art",
+                                                          "cartoon series",
+                                                          "children's series",
+                                                          "comedy",
+                                                          "cooking show",
+                                                          "courtroom drama",
+                                                          "current affairs",
+                                                          "daytime television",
+                                                          "dark comedy",
+                                                          "detective fiction",
+                                                          "docudrama",
+                                                          "documentary",
+                                                          "dramality",
+                                                          "dramatic programming",
+                                                          "dramedy",
+                                                          "educational",
+                                                          "factual television",
+                                                          "fantasy",
+                                                          "game show",
+                                                          "infomercials",
+                                                          "instructional",
+                                                          "late night television",
+                                                          "legal drama",
+                                                          "medical drama",
+                                                          "mockumentary",
+                                                          "music television",
+                                                          "news show",
+                                                          "nsfw",
+                                                          "police procedural",
+                                                          "prime-time television",
+                                                          "reality",
+                                                          "religious",
+                                                          "romcom",
+                                                          "science fiction",
+                                                          "serial",
+                                                          "sitcom",
+                                                          "soap opera",
+                                                          "space western",
+                                                          "sports",
+                                                          "stand-up comedy",
+                                                          "tabloid television",
+                                                          "telenovela",
+                                                          "variety show",
+                                                          "western series"])
+    seasons = IntegerField('Amount of seasons', validators=[
+                           validators.NumberRange(1, 99, "You forgot to add amount of seasons")])
     submit = SubmitField('Submit')
 
 
@@ -47,6 +101,8 @@ def add():
     form = SeriesAddForm()
 
     if form.validate_on_submit():
+        if form.img:
+            pass
 
         series_entry = Series(form.name.data, form.description.data, form.year.data,
                               form.genre.data, form.seasons.data, current_user.id)

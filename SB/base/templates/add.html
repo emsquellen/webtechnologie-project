@@ -5,22 +5,73 @@
 
 {% block content %}
 <div class='container'>
-    <div class="row justify-content-center">
+    <div class="columns">
         <div class="column col-12">
             <h1>Add a series</h1>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="column col-9">
-            <form method="POST">
-                {{ form.hidden_tag() }}
-                {{ form.name.label }}{{ form.name() }}
-                {{ form.description.label }}{{ form.description() }}
-                {{ form.year.label }} {{ form.year() }}
-                {{ form.genre.label }}{{ form.genre() }}
-                {{ form.seasons.label }}{{ form.seasons() }}
-                {{ form.submit() }}
-            </form>
+    <div class="columns">
+        <div class="column col-sm-12 col-6 col-mx-auto">
+            <div class="form-horizontal">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            {{ form.name.label(class="form-label") }}
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            {{ form.name(class="form-input") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            Image
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">https://</span>
+                                <input class="form-input" type="text" placeholder="Image url">
+                                <button class="btn btn-primary input-group-btn">Check</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            {{ form.description.label(class="form-label") }}
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            {{ form.description(class="form-input") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            {{ form.year.label(class="form-label") }}
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            {{ form.year(class="form-input", type="number", value="1970") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            {{ form.genre.label(class="form-label") }}
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            {{ form.genre(class="form-input") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-3 col-sm-12">
+                            {{ form.seasons.label(class="form-label") }}
+                        </div>
+                        <div class="col-9 col-sm-12">
+                            {{ form.seasons(class="form-input", type="number") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

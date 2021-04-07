@@ -5,7 +5,7 @@ from .series import Series
 class Rankinglist(db.Model):
     __tablename__ = 'rankinglist'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    rankinglist_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(64), unique=True, index=True)
     creator = db.Column(db.Integer, db.ForeignKey('users.id'))
     date_added = db.Column(db.DateTime)
@@ -30,7 +30,7 @@ class RankinglistItem(db.Model):
     __tablename__ = 'rankinglist_item'
 
     rankinglist_id = db.Column(db.Integer, db.ForeignKey(
-                           'rankinglist.id'), primary_key=True)
+                           'rankinglist.rankinglist_id'), primary_key=True)
     series = db.Column(db.Integer, db.ForeignKey(
                        'series.id'), primary_key=True)
     index = db.Column(db.Integer)

@@ -28,13 +28,17 @@
     {% endif %}
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <div class=flashes>
-        {% for category, message in messages %}
-        <div class="toast toast-{{ category }}">
-            {{ message }}
-            <button class="btn btn-clear float-right"></button>>
+    <div class="columns">
+        <div class="column col-sm-12 col-10 col-mx-auto">
+            <div class="flashes">
+                {% for category, message in messages %}
+                <div class="toast toast-{{ category }}">
+                    {{ message }}
+                    <button class="btn btn-clear float-right"></button>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
     </div>
     {% endif %}
     {% endwith %}

@@ -1,6 +1,6 @@
 from SB import db
 from datetime import datetime
-
+from base64 import b64encode
 
 # id
 # name
@@ -15,14 +15,16 @@ class Series(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(64), unique=True, index=True)
-    description = db.Column(db.String(128))
+    img = db.Column(db.BLOB)
+    description = db.Column(db.String(512))
     year = db.Column(db.Integer)
     genre = db.Column(db.String(16))
     seasons = db.Column(db.Integer)
     added_by = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, name, description, year, genre, seasons, added_by):
+    def __init__(self, name, img, description, year, genre, seasons, added_by):
         self.name = name
+        self.img = img
         self.description = description
         self.year = year
         self.genre = genre
@@ -38,6 +40,7 @@ class Series(db.Model):
         return [
             data.id,
             data.name,
+            data.imgloader(),
             data.description,
             data.year,
             data.genre,
@@ -53,5 +56,9 @@ class Series(db.Model):
             itemlist.append(item.name)
             itemlist.append(item.description)
             itemlist.append(item.id)
+            itemlist.append(item.imgloader())
             L.append(itemlist)
         return L
+
+    def img_loader(self):
+        img = "data:;base64," + base64.b64encode(self.img).decode('ascii') if self.img else None

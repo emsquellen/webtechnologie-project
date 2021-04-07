@@ -3,7 +3,7 @@ base = Blueprint(
     "base", __name__)
 
 
-@base.route('/')
-@base.route('/index')
+@base.route('/', methods=['GET', 'POST'])
+@base.route('/index', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')

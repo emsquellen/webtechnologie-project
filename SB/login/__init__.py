@@ -15,8 +15,11 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password',
-                             validators=[DataRequired(), EqualTo('pass_confirm', message='Passwords Must Match!')])
-    pass_confirm = PasswordField('Confirm password', validators=[DataRequired()])
+                             validators=[DataRequired(),
+                                         EqualTo('pass_confirm',
+                                         message='Passwords Must Match!')])
+    pass_confirm = PasswordField(
+        'Confirm password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
     def check_email(self, field):
@@ -25,4 +28,5 @@ class RegistrationForm(FlaskForm):
 
     def check_username(self, field):
         if User.query.filter_by(username=field.data).first():
-            raise ValidationError('Deze gebruikersnaam is al vergeven, kies een andere naam!')
+            raise ValidationError(
+                'Deze gebruikersnaam is al vergeven, kies een andere naam!')

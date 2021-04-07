@@ -20,7 +20,7 @@ def rankinglist(list_id):
     index = [x[2] for x in entries]
     series = [Series.get_data(x[1]) for x in entries]
     length = len(series)
-    return render_template('rankinglist.html',
+    return render_template('ranklist.html',
                            title=title,
                            rankinglist_id=list_id,
                            creator=creator,
@@ -46,6 +46,6 @@ def add():
         db.session.commit()
 
         flash(f"Sucessfully made rankinglist {form.title.data}!")
-        return redirect(f'./rankinglist/{new_entry.rankinglist_id}')
+        return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
 
     return render_template("add_rank.html", form=form)
