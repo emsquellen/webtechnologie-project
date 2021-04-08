@@ -4,7 +4,23 @@
 {% block style %}{{ super() }}{% endblock %}
 
 {% block content %}
+<h1>Browse all series</h1>
+
 <div class="columns">
+    {% if empty_state %}
+    <div class="column col-6 col-mx-auto">
+        <div class="empty">
+            <div class="empty-icon">
+              <i class="icon icon-cross"></i>
+            </div>
+            <p class="empty-title h5">There are no series added yet</p>
+            <p class="empty-subtitle">Click the button to add the first series!.</p>
+            <div class="empty-action">
+              <a href="./add" class="btn btn-primary">Add series</a>
+            </div>
+          </div>
+    </div>
+    {% endif %}
     {% for title, description, id in titlelist %}
     <div class="column col-2">
         <div class="card">

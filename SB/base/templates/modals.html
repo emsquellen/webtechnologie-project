@@ -8,18 +8,6 @@
         <div class="modal-body">
             <div class="content">
                 <div class="columns">
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    <div class=flashes>
-                        {% for category, message in messages %}
-                        <div class="toast toast-{{ category }}">
-                            {{ message }}
-                            <button class="btn btn-clear float-right"></button>>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {% endwith %}
                 </div>
                 <div class="columns">
                     <div class="column col-12 col-mx-auto">
@@ -68,7 +56,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#close" class="btn btn-clear float-right" aria-label="Close">Close</a>
+            <a href="#close" class="btn btn-primary" aria-label="Close">Close</a>
         </div>
     </div>
 </div>
@@ -83,18 +71,6 @@
         <div class="modal-body">
             <div class="content">
                 <div class="columns">
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    <div class=flashes>
-                        {% for category, message in messages %}
-                        <div class="toast toast-{{ category }}">
-                            {{ message }}
-                            <button class="btn btn-clear float-right"></button>>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {% endwith %}
                 </div>
                 <div class="columns">
                     <div class="column col-12 col-mx-auto">
@@ -133,7 +109,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#close" class="btn btn-clear float-right" aria-label="Close">Close</a>
+            <a href="#close" class="btn btn-primary" aria-label="Close">Close</a>
         </div>
     </div>
 </div>

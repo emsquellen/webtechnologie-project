@@ -59,7 +59,7 @@ def login():
             flash('Logged in successfully.')
             next = request.args.get('next')
             if next == None or not next[0] == '/':
-                next = url_for('welkom')
+                next = url_for('secure.profile')
 
             return redirect(next)
     return render_template('login.html', form=form)

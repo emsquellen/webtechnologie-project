@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class="columns">
+        <div class="column col-12">
+            <h1>Add a series</h1>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-9">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <div class="col-3 col-sm-12">
+                        {{ form.title.label(class="form-label") }}
+                    </div>
+                    <div class="col-9 col-sm-12">
+                        <div class="input-group">
+                            {{ form.title(class="form-input input-lg", type="text", placeholder="Ranglist title") }}
+                            {{ form.submit(class="btn btn-primary input-group-btn btn-lg") }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

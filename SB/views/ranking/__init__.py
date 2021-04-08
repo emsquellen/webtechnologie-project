@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, Markup, flash, redirect
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
+from wtforms import StringField, IntegerField, SubmitField, validators
 from SB.models.ranking import Rankinglist, RankinglistItem
 from SB.models.series import Series
 from SB.models import User
@@ -31,9 +31,9 @@ def rankinglist(list_id):
 
 
 class RankingAddForm(FlaskForm):
-    title = StringField('Title of your new rankinglist:')
+    title = StringField('Title of your new rankinglist:', validators=[
+                       validators.DataRequired("Title is required")])
     submit = SubmitField('Submit')
-
 
 @blueprint.route("/add", methods=['GET', 'POST'])
 @login_required

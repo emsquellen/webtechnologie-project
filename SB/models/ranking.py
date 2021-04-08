@@ -25,6 +25,10 @@ class Rankinglist(db.Model):
             data.date_added,
             data.contents]
 
+    @classmethod
+    def autocomplete(cls):
+        pass
+
 
 class RankinglistItem(db.Model):
     __tablename__ = 'rankinglist_item'

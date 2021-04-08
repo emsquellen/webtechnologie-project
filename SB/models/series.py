@@ -22,9 +22,8 @@ class Series(db.Model):
     seasons = db.Column(db.Integer)
     added_by = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, name, img, description, year, genre, seasons, added_by):
+    def __init__(self, name, description, year, genre, seasons, added_by):
         self.name = name
-        self.img = img
         self.description = description
         self.year = year
         self.genre = genre
@@ -40,7 +39,6 @@ class Series(db.Model):
         return [
             data.id,
             data.name,
-            data.imgloader(),
             data.description,
             data.year,
             data.genre,
@@ -56,7 +54,6 @@ class Series(db.Model):
             itemlist.append(item.name)
             itemlist.append(item.description)
             itemlist.append(item.id)
-            itemlist.append(item.imgloader())
             L.append(itemlist)
         return L
 
