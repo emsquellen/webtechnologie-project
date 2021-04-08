@@ -4,16 +4,21 @@
 {% block style %}{{ super() }}{% endblock %}
 
 {% block content %}
+
 <div class="col-9 col-md-12 col-mx-auto">
     <h1>{{ name }} <small class="label">{{id}}</small></h1>
-    <span class="chip">{{ year }}</span><span class="chip">{{ genre }}</span>
+    <span class="chip">{{ year }}</span><span class="chip">{{ genre }} </span>
+    <button class="btn btn-primary">
+        Toevoegen als favoriet
+      </button>
     <div>
         <blockquote>
             <p>{{ description }}</p>
         </blockquote>
-        {{ seasons }}
-        {{ added_by }}
+       <mark>Season {{ seasons }}</mark>
+       <cite>Episode {{ added_by }} </cite>
     </div>
 </div>
+
 
 {% endblock %}
