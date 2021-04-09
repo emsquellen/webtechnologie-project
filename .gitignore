@@ -80,3 +80,5 @@ pdocs/_build/
 
 # Cython debug symbols
 cython_debug/
+.obsidian/config
+.obsidian/workspace

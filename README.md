@@ -4,10 +4,13 @@ A TV series database/flask webapp with ranking, made with [spectre.css](https://
 
 ## Database structure
 
-![](docs/database_diagram.png)
+![](docs/assets/database_diagram.png)
 
+## Documentation
+[See here](/docs/index)
 ## Contributors
 
 - [software0102](https://github.com/software0102)
 
 - [emsquellen](https://github.com/emsquellen)
+

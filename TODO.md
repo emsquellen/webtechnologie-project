@@ -7,32 +7,32 @@
   - [ ] Navbar
   - [ ] Base (index)
   - [ ] Forms
-    - [ ] Login
-    - [ ] Add series
-    - [ ] Add rankings
-  - [ ] User page
-  - [ ] Series
-    - [ ] Browse series
-    - [ ] Series index
+    - [x] Login
+    - [x] Add series
+    - [x] Add rankings
+  - [x] User page
+  - [x] Series
+    - [x] Browse series
+    - [x] Series page
   - [ ] Ranking
     - [ ] Personal rankings
-    - [ ] Easy-to-use ranking system
+    - [x] Easy-to-use ranking system
 
 - [ ] Backend working
   - [ ] Python code
-    - [ ] Passwords hashed and saved securely
+    - [x] Passwords hashed and saved securely
     - [ ] Users stuff
       - [ ] Permissions
-      - [ ] Email validation
+      - [x] Email validation
       - [ ] Password requirements
     - [ ] Series
       - [X] Add series
       - [ ] Delete series
       - [ ] Modify series
-      - [ ] Add series to ranking
+      - [x] Add series to ranking
     - [ ] Ranking
       - [X] Make ranking list
-      - [ ] Add items to ranking
+      - [x] Add items to ranking
       - [ ] Modify ranking
       - [ ] Remove items from ranking
   - [ ] Javascript

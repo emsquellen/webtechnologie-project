@@ -12,6 +12,22 @@
     </div>
     <div class="columns">
         <div class="column col-6 col-mx-auto">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{form.index(class="form-input", type="number", placeholder="Index")}}
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        {{ form.id(class="form-input input-lg", type="number", placeholder="Add series") }}
+                        {{ form.submit(class="btn btn-primary input-group-btn btn-lg")}}
+                      </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column col-6 col-mx-auto">
             <div id="rankinglistdescription">
                 <p class="text-center">id: {{ rankinglist_id }}</p>
             </div>

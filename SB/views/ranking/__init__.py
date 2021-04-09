@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, Markup, flash, redirect
+from flask import render_template, Blueprint, Markup, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, validators
 from SB.models.ranking import Rankinglist, RankinglistItem
@@ -11,8 +11,26 @@ blueprint = Blueprint(
     "rankinglists", __name__, template_folder="templates", static_folder="static")
 
 
+class AddItem(FlaskForm):
+    id = IntegerField('Series ID', validators=[
+                       validators.DataRequired("Title is required")])
+    index = IntegerField('Index', validators=[
+                       validators.DataRequired("Index is required")])
+    submit = SubmitField('Submit')
+
+
 @blueprint.route("/<int:list_id>", methods=['GET', 'POST'])
 def rankinglist(list_id):
+    form = AddItem()
+
+    if form.validate_on_submit():
+        new_entry = RankinglistItem(list_id, form.id.data, form.index.data)
+        db.session.add(new_entry)
+        db.session.commit()
+
+        flash(f"Sucessfully added entry")
+        return redirect(f'./{list_id}')
+
     title, creator, date_added, contents = Rankinglist.get_data(
         rankinglist_id=list_id)
     creator = User.get_username(creator)
@@ -27,13 +45,15 @@ def rankinglist(list_id):
                            date_added=date_added,
                            index=index,
                            series=series,
-                           length=length)
+                           length=length,
+                           form=form)
 
 
 class RankingAddForm(FlaskForm):
     title = StringField('Title of your new rankinglist:', validators=[
                        validators.DataRequired("Title is required")])
     submit = SubmitField('Submit')
+
 
 @blueprint.route("/add", methods=['GET', 'POST'])
 @login_required
