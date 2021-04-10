@@ -4,5 +4,70 @@
 {% block style %}{{ super() }}{% endblock %}
 
 {% block content %}
-<h1>Series Archive</h1>
+<div class="container">
+    <div class="col-4 col-mx-auto">
+        <div class="card">
+            <div class="card-image">
+              <img src="https://www.superguide.nl/s3fs-public/main_media/teen-wolf-series-mtv.png" width="300" class="img-responsive">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Teen Wolf</div>
+              <div class="card-subtitle text-gray">2011</div>
+            </div>
+            <div class="card-body">
+                Scott McCall, an awkward teen, turns into a werewolf<br>after being bitten by one a day before sophomore year.<br>	He must learn to adapt to his new identity while handling<br>life as a teenager.
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary"><a href="{{ url_for('series.index') }}">CHECK IT OUT</a></button> 
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="https://www.streamwijzer.be/wp-content/uploads/2019/09/The-End-Of-The-Fucking-World-seizoen-3-Netflix.jpg.webp" width="300" class="img-responsive">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">The End of the F *** ing World</div>
+              <div class="card-subtitle text-gray">2011</div>
+            </div>
+            <div class="card-body">
+                James is 17 and is pretty sure he is a psychopath.<br>Alyssa, also 17, is the cool and moody new girl at school.<br>The pair make a connection and she persuades him to embark<br>on a road trip in search of her real father.
+
+
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary"><a href="{{ url_for('series.index') }}">CHECK IT OUT</a></button> 
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="https://images.superguide.nl/sm-4XOR4VSdB_h1PhW0BJlu4f-k=/0x0:1080x593/890x0/smart/superguide.nl/s3fs-public/main_media/pretty-little-liars_0.png?itok=uW_Dp5yh" width="300" class="img-responsive">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Pretty Little Liars</div>
+              <div class="card-subtitle text-gray">2011</div>
+            </div>
+            <div class="card-body">
+                The series follows the lives of four teenage girls -<br>Aria, Spencer, Hanna and Emily; four estranged<br>friends whose darkest secrets are about to unravel.
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary"><a href="{{ url_for('series.index') }}">CHECK IT OUT</a></button> 
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="https://www.superguide.nl/s3fs-public/main_media/teen-wolf-series-mtv.png" width="300" class="img-responsive">
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Teen Wolf</div>
+              <div class="card-subtitle text-gray">2011</div>
+            </div>
+            <div class="card-body">
+                Scott McCall, an awkward teen, turns into a werewolf<br>after being bitten by one a day before sophomore year.<br>	He must learn to adapt to his new identity while handling<br>life as a teenager.
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary"><a href="{{ url_for('series.index') }}">CHECK IT OUT</a></button> 
+            </div>
+          </div>
+    </div>
+  </div>
 {% endblock %}
