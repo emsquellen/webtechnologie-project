@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, Markup, flash
+from flask import render_template, Blueprint, Markup, flash, Response
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, TextAreaField, validators, SelectField, FileField
 from SB.models.series import Series
@@ -16,7 +16,8 @@ blueprint = Blueprint(
 def index():
     titlelist = Series.get_index()
     empty_state = True if len(titlelist) == 0 else False
-    return render_template('series_index.html', titlelist=titlelist, empty_state=empty_state)
+    return render_template('series_index.html',
+    titlelist=titlelist, empty_state=empty_state)
 
 
 class AddToRanglist(FlaskForm):
@@ -137,3 +138,37 @@ def add():
         return render_template("add.html", form=form)
 
     return render_template("add.html", form=form)
+
+
+@blueprint.route('/delete/<int:series_id>', methods=['GET', 'POST'])
+def delete(series_id):
+    try:
+        serie = Series.query.filter_by(id=series_id).first()
+        db.session.delete(serie)
+        db.session.commit()
+        flash(u'Deletion submitted sucessfully', 'sucess')
+        return Response(status=200, mimetype='application/json')
+    except:
+        return Response(status=500, mimetype='application/json')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,7 +40,7 @@ def create_app():
     def server_error(e):
         return render_template('500.html'), 500
 
-    
+
     db.create_all()
 
     app.register_blueprint(base.base)
@@ -52,4 +52,4 @@ def create_app():
 
 def run():
     app = create_app()
-    app.run()
+    app.run(debug=True)
