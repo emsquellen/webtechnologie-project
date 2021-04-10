@@ -24,7 +24,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-3 col-sm-12">
-                                        {{ register_form.username.label(class="form-label", id="register_username_label") }}
+                                        {{ register_form.username.label(class="form-label",
+                                        id="register_username_label") }}
                                     </div>
                                     <div class="col-9 col-sm-12">
                                         {{ register_form.username(class="form-input", id="register_username") }}
@@ -32,7 +33,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-3 col-sm-12">
-                                        {{ register_form.password.label(class="form-label", id="register_password_label") }}
+                                        {{ register_form.password.label(class="form-label",
+                                        id="register_password_label") }}
                                     </div>
                                     <div class="col-9 col-sm-12">
                                         {{ register_form.password(class="form-input", id="register_password") }}
@@ -40,7 +42,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-3 col-sm-12">
-                                        {{ register_form.pass_confirm.label(class="form-label", id="register_passconf_label") }}
+                                        {{ register_form.pass_confirm.label(class="form-label",
+                                        id="register_passconf_label") }}
                                     </div>
                                     <div class="col-9 col-sm-12">
                                         {{ register_form.pass_confirm(class="form-input", id="register_passconf") }}
@@ -115,22 +118,12 @@
 </div>
 
 <script>
-    document.querySelectorAll('a[aria-label="Close"]').forEach((el) => {
-        el.addEventListener('click', () => {
-            document.getElementById("register_m").classList.remove("active");
-            document.getElementById("login_m").classList.remove("active");
-        })
-    })
     document.querySelector("#checkbox_pw").addEventListener("change", function () {
-            var a = document.getElementById("login_password");
-            if (this.checked) {
-                a.type = "text";
-            } else {
-                a.type = "password";
-            }
-        });
-
-    function activate_modal(modal){
-        document.getElementById(modal).classList.add("active");
-    }
+        var a = document.getElementById("login_password");
+        if (this.checked) {
+            a.type = "text";
+        } else {
+            a.type = "password";
+        }
+    });
 </script>

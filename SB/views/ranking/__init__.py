@@ -20,6 +20,7 @@ class AddItem(FlaskForm):
 
 
 @blueprint.route("/<int:list_id>", methods=['GET', 'POST'])
+@login_required
 def rankinglist(list_id):
     form = AddItem()
 
@@ -69,3 +70,10 @@ def add():
         return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
 
     return render_template("add_rank.html", form=form)
+
+
+@blueprint.route("/", methods=['GET', 'POST'])
+@blueprint.route("/index", methods=['GET', 'POST'])
+@login_required
+def index():
+    return render_template('rindex.html')

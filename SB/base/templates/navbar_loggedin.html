@@ -3,9 +3,9 @@
         <div class="column col-lg">
             <header class="navbar">
                 <div class="navbar-section">
-                    <a href="{{ url_for('base.index') }}" class="navbar-brand mr-2">placeholderName</a>
+                    <a href="{{ url_for('base.index') }}" class="navbar-brand mr-2">SeriesDB</a>
                     <a class="btn btn-link" href="{{ url_for('series.index') }}">Series</a>
-                    
+                    <a class="btn btn-link" href="{{ url_for('rankinglists.index') }}">Ranking</a>
                 </div>
                 <div class="navbar-section">
                     <a class="btn btn-primary" href="{{ url_for('secure.profile') }}">Logged in as {{ current_user.username }}</a>

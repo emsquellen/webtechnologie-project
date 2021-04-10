@@ -1,0 +1,29 @@
+<div class="modal modal-sm" id="add_modal">
+    <a class="modal-overlay" href="#" aria-label="Close"></a>
+    <div class="modal-container" role="document">
+        <div class="modal-header">
+            <a class="btn btn-clear float-right" href="#" aria-label="Close"></a>
+            <div class="modal-title h5">Add to RankingList</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <form method="POST">
+                    <div class="form-group">
+                        {{ form.rankinglist_id.label(class="form-label") }}
+                        {{ form.rankinglist_id(class="form-input", type="number", placeholder="Ranglist") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.index.label(class="form-label") }}
+                        {{ form.index(class="form-input", type="number", placeholder="index") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-link" href="#" aria-label="Close">Close</a>
+        </div>
+    </div>
+</div>

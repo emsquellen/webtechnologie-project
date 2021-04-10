@@ -2,15 +2,14 @@
 {% block title %}<title>Index</title>{% endblock %}
 {% block script %}{{ super() }}{% endblock %}
 {% block style %}{{ super() }}{% endblock %}
-
+{% include 'addm.html' %}
 {% block content %}
-<script>
-    func
 </script>
+
 <div class="col-9 col-md-12 col-mx-auto">
     <h1>{{ name }} <small class="label">{{ id }}</small></h1>
     <span class="chip">{{ year }}</span><span class="chip">{{ genre }} </span>
-    <button class="btn btn-primary" onclick="toggle_ranglist()">
+    <button class="btn btn-primary" onclick="activate_modal('add_modal')">
         Toevoegen aan ranglist
       </button>
     <div>

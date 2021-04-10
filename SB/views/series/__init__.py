@@ -53,7 +53,8 @@ def info_page(series_id):
                            year=year,
                            genre=genre,
                            seasons=seasons,
-                           added_by=added_by)
+                           added_by=added_by,
+                           form=form)
 
 
 class SeriesAddForm(FlaskForm):
