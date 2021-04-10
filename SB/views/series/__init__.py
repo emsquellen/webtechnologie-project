@@ -44,7 +44,7 @@ def info_page(series_id):
             f"Sucessfully added {name} to ranglist! <a href='/rankinglist/{{ new_entry.rankinglist_id }}'>Click here to view!</a>'"))
         return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
 
-    id = User.get_username(id)
+    added_by = User.get_username(added_by)
 
     return render_template('series.html',
                            id=id,

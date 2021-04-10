@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -31,6 +31,16 @@ def create_app():
     login_manager.login_view = "secure.login"
 
     from SB.views import base, secure, series, ranking
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
+    @app.errorhandler(500)
+    def server_error(e):
+        return render_template('500.html'), 500
+
+    
     db.create_all()
 
     app.register_blueprint(base.base)
@@ -42,4 +52,4 @@ def create_app():
 
 def run():
     app = create_app()
-    app.run(debug=True)
+    app.run()
