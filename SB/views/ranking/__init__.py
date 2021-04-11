@@ -15,9 +15,9 @@ blueprint = Blueprint(
 
 class AddItem(FlaskForm):
     id = IntegerField('Series ID', validators=[
-                       validators.DataRequired("Title is required")])
+        validators.DataRequired("Title is required")])
     index = IntegerField('Index', validators=[
-                       validators.DataRequired("Index is required")])
+        validators.DataRequired("Index is required")])
     submit = SubmitField('Submit')
 
 
@@ -54,7 +54,7 @@ def rankinglist(list_id):
 
 class RankingAddForm(FlaskForm):
     title = StringField('Title of your new rankinglist:', validators=[
-                       validators.DataRequired("Title is required")])
+        validators.DataRequired("Title is required")])
     submit = SubmitField('Submit')
 
 
