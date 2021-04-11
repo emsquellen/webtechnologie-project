@@ -1,6 +1,7 @@
 from .. import db
 from datetime import datetime
 from .series import Series
+from SB.models import User
 
 class Rankinglist(db.Model):
     __tablename__ = 'rankinglist'
@@ -28,6 +29,18 @@ class Rankinglist(db.Model):
     @classmethod
     def autocomplete(cls):
         pass
+
+    @classmethod
+    def index_list(cls):
+        data = cls.query.all()
+        item_catalog = []
+        for item in data:
+            single = []
+            single.append(item.rankinglist_id)
+            single.append(item.title)
+            single.append(User.query.filter_by(id=item.creator).first().username)
+            item_catalog.append(single)
+        return item_catalog
 
 
 class RankinglistItem(db.Model):

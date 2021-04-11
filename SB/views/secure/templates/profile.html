@@ -28,7 +28,50 @@
                     <div class="tile tile-centered">
                         <div class="tile-content">
                             <div class="tile-title text-bold">Name</div>
-                            <div class="tile-subtitle">{{ current_user.username }}</div>
+                            <div class="d-visible test-class-1" id="uname-txt">
+                                <div class="tile-subtitle">{{ current_user.username }}</div>
+                            </div>
+                            <div class="d-none test-class-1" id="uname-input">
+                                <form method="POST">
+                                    {{ form.hidden_tag() }}
+                                    <div class="input-group">
+                                        {{ form.input(class="form-input input-sm", type="text",
+                                        placeholder=current_user.username, value=current_user.username) }}
+                                    </div>
+                                    <div class="d-none">
+                                        {{ form.submit(class='') }}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tile-action">
+                            <button id='toggleEdit' class="btn btn-link btn-action btn-lg">
+                                <i class="icon icon-edit"></i>
+                            </button>
+                            <script>
+                                window.onload = () => {
+                                    var click = 0
+                                    var text = document.getElementById('uname-txt');
+                                    var input = document.getElementById('uname-input');
+                                    document.querySelector('#toggleEdit').addEventListener('click', () => {
+                                        click++;
+                                        if (click % 2 === 1) {
+                                            console.log('input mode');
+                                            text.classList.remove('d-visible');
+                                            text.classList.add('d-none');
+                                            input.classList.remove('d-none');
+                                            input.classList.add('d-visible');
+                                        } if (click % 2 === 0) {
+                                            console.log('text mode');
+                                            text.classList.remove('d-none');
+                                            text.classList.add('d-visible');
+                                            input.classList.remove('d-visible');
+                                            input.classList.add('d-none');
+                                        }
+                                        console.log(click);
+                                    })
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>

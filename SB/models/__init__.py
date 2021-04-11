@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    username = db.Column(db.String(64), unique=True, index=True)
+    username = db.Column(db.String(64))
     password_hash = db.Column(db.String(256))
 
     def __init__(self, email, username, password):

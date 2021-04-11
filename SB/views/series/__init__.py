@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, Markup, flash, Response
+from flask import render_template, Blueprint, Markup, flash, Response, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, TextAreaField, validators, SelectField, FileField
 from SB.models.series import Series
@@ -17,7 +17,7 @@ def index():
     titlelist = Series.get_index()
     empty_state = True if len(titlelist) == 0 else False
     return render_template('series_index.html',
-    titlelist=titlelist, empty_state=empty_state)
+                           titlelist=titlelist, empty_state=empty_state)
 
 
 class AddToRanglist(FlaskForm):

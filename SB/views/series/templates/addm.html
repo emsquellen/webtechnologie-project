@@ -8,6 +8,7 @@
         <div class="modal-body">
             <div class="content">
                 <form method="POST">
+                    {{ form.hidden_tag() }}
                     <div class="form-group">
                         {{ form.rankinglist_id.label(class="form-label") }}
                         {{ form.rankinglist_id(class="form-input", type="number", placeholder="Ranglist") }}

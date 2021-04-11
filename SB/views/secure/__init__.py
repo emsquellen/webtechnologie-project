@@ -1,8 +1,12 @@
 from SB import db, app, login_manager
 from flask import render_template, redirect, request, url_for, flash, Blueprint
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from SB.models import User
 from SB.login import LoginForm, RegistrationForm
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
 blueprint = Blueprint(
     "secure", __name__, template_folder="templates", static_folder="static")
 
@@ -55,10 +59,29 @@ def logout():
     return redirect(url_for('base.index'))
 
 
+class Uname(FlaskForm):
+    input = StringField(64,
+                        validators=[DataRequired('Please enter a new username')])
+
+    submit = SubmitField()
+
+
 @blueprint.route('/profile', methods=['GET', 'POST'])
 @login_required
 def profile():
-    return render_template('profile.html')
+    form = Uname()
+    id = current_user.id
+    print(id)
+    if form.validate_on_submit():
+        current = User.query.filter_by(id=id).first()
+        print(current)
+        print(current.username)
+        setattr(current, 'username', form.input.data)
+        db.session.commit()
+        print(current.username)
+        flash(u'username change sucessful', 'sucess')
+        return render_template('profile.html', form=form)
+    return render_template('profile.html', form=form)
 
 
 @blueprint.route('/login', methods=['GET', 'POST'])
@@ -68,7 +91,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None:
             flash('Username is incorrect.', "warning")
-            return render_template('login.html',form=form)
+            return render_template('login.html', form=form)
         else:
             if user.check_password(form.password.data) and user is not None:
                 login_user(user)

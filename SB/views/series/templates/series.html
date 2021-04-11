@@ -11,25 +11,24 @@
     <span class="chip">{{ year }}</span><span class="chip">{{ genre }} </span>
     <button class="btn btn-primary" onclick="activate_modal('add_modal')">
         Toevoegen aan ranglist
-      </button>
+    </button>
     <button class="btn btn-primary" onclick="deleteSeries()">Delete</button>
     <div>
         <blockquote>
             <p>{{ description }}</p>
         </blockquote>
-       <mark>This series has {{ seasons }} seasons</mark><br>
-       <cite>Added by {{ added_by }} </cite>
+        <mark>This series has {{ seasons }} seasons</mark><br>
+        <cite>Added by {{ added_by }} </cite>
     </div>
 </div>
 
 <script>
-    function deleteSeries(){
-    var url = window.location.toString();
-    var current_id = url.split('/').filter(e => e).pop()
-    fetch(`./delete/${current_id}`)
-    .then(response => response.json());
-
-    setTimeout(() => { document.location.href="/"; }, 100);
+    function deleteSeries() {
+        var url = window.location.toString();
+        var current_id = url.split('/').filter(e => e).pop()
+        fetch(`./delete/${current_id}`)
+            .then(response => response.json())
+            .then(setTimeout(() => { document.location.href = "/"; }, 100));
     }
 </script>
 {% endblock %}

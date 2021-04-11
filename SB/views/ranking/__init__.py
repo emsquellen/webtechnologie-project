@@ -76,4 +76,6 @@ def add():
 @blueprint.route("/index", methods=['GET', 'POST'])
 @login_required
 def index():
-    return render_template('rindex.html')
+    rankings = Rankinglist.index_list()
+    
+    return render_template('rindex.html', rankings=rankings)
