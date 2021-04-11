@@ -23,6 +23,8 @@
 </div>
 
 <script>
+    // To be a little fancy, we use Fetch API to delete
+    // a series entry
     function deleteSeries() {
         var url = window.location.toString();
         var current_id = url.split('/').filter(e => e).pop()

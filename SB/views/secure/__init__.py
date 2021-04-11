@@ -79,7 +79,7 @@ def profile():
         setattr(current, 'username', form.input.data)
         db.session.commit()
         print(current.username)
-        flash(u'username change sucessful', 'sucess')
+        flash(u'username change sucessful', 'success')
         return render_template('profile.html', form=form)
     return render_template('profile.html', form=form)
 

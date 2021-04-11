@@ -1,10 +1,12 @@
-from flask import render_template, Blueprint, Markup, flash, redirect, url_for
+# Ex
+from flask import render_template, Blueprint, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, validators
+from flask_login import login_required, current_user
+# Our own modules
 from SB.models.ranking import Rankinglist, RankinglistItem
 from SB.models.series import Series
 from SB.models import User
-from flask_login import login_user, login_required, current_user
 from SB import db
 
 blueprint = Blueprint(
@@ -29,7 +31,7 @@ def rankinglist(list_id):
         db.session.add(new_entry)
         db.session.commit()
 
-        flash(f"Sucessfully added entry")
+        flash(u"Successfully added entry", 'success')
         return redirect(f'./{list_id}')
 
     title, creator, date_added, contents = Rankinglist.get_data(
@@ -66,7 +68,7 @@ def add():
         db.session.add(new_entry)
         db.session.commit()
 
-        flash(f"Sucessfully made rankinglist {form.title.data}!")
+        flash(f"Successfully made rankinglist {form.title.data}!")
         return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
 
     return render_template("add_rank.html", form=form)
@@ -77,5 +79,5 @@ def add():
 @login_required
 def index():
     rankings = Rankinglist.index_list()
-    
+
     return render_template('rindex.html', rankings=rankings)

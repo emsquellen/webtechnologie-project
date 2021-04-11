@@ -118,7 +118,8 @@
 </div>
 
 <script>
-    document.querySelector("#checkbox_pw").addEventListener("change", function () {
+    // View password button
+    document.querySelector("#checkbox_pw").addEventListener("change", () => {
         var a = document.getElementById("login_password");
         if (this.checked) {
             a.type = "text";

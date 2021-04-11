@@ -1,7 +1,9 @@
+// Activates a modal
 function activate_modal(modal) {
     document.getElementById(modal).classList.add("active");
 }
 
+// Places EventListeners on all close buttons
 // After DOM is loaded
 // function () { is the same thing as () => {
 // Just some aesthethic y'know 

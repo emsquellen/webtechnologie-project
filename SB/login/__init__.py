@@ -6,12 +6,18 @@ from SB.models import User
 
 
 class LoginForm(FlaskForm):
+    """
+    Login form
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
 
 class RegistrationForm(FlaskForm):
+    """
+    Registration form
+    """
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password',
@@ -24,9 +30,4 @@ class RegistrationForm(FlaskForm):
 
     def check_email(self, field):
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Dit e-mailadres staat al geregistreerd!')
-
-    def check_username(self, field):
-        if User.query.filter_by(username=field.data).first():
-            raise ValidationError(
-                'Deze gebruikersnaam is al vergeven, kies een andere naam!')
+            raise ValidationError('This email is already in use')

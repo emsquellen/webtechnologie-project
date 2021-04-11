@@ -36,14 +36,23 @@ def info_page(series_id):
     form = AddToRanglist()
 
     if form.validate_on_submit():
-        new_entry = RankinglistItem(
-            form.rankinglist_id.data, series_id, form.index.data)
-        db.session.add(new_entry)
-        db.session.commit()
+        if RankinglistItem.query.filter(
+            RankinglistItem.rankinglist_id.like(form.rankinglist_id.data)
+            ).filter(
+            RankinglistItem.series.like(series_id)
+        ).first() is None:
 
-        flash(Markup(
-            f"Sucessfully added {name} to ranglist! <a href='/rankinglist/{{ new_entry.rankinglist_id }}'>Click here to view!</a>'"))
-        return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
+            new_entry = RankinglistItem(
+                form.rankinglist_id.data, series_id, form.index.data)
+            db.session.add(new_entry)
+            db.session.commit()
+
+            flash(Markup(
+                f"Successfully added {name} to ranglist! <a href='/rankinglist/{{ new_entry.rankinglist_id }}'>Click here to view!</a>'"))
+            return redirect(f'../rankinglist/{new_entry.rankinglist_id}')
+        else:
+            flash(
+                f'Series already in ranglist {form.rankinglist_id.data}', 'warning')
 
     added_by = User.get_username(added_by)
 
@@ -134,7 +143,7 @@ def add():
         db.session.add(series_entry)
         db.session.commit()
 
-        flash(f"Sucessfully added series {form.name.data}!")
+        flash(f"Successfully added series {form.name.data}!")
         return render_template("add.html", form=form)
 
     return render_template("add.html", form=form)
@@ -146,29 +155,7 @@ def delete(series_id):
         serie = Series.query.filter_by(id=series_id).first()
         db.session.delete(serie)
         db.session.commit()
-        flash(u'Deletion submitted sucessfully', 'sucess')
+        flash(u'Deletion submitted sucessfully', 'success')
         return Response(status=200, mimetype='application/json')
     except:
         return Response(status=500, mimetype='application/json')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

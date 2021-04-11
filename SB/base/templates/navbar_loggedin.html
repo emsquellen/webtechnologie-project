@@ -1,14 +1,31 @@
- <div class="container">
+<div class="container">
     <div class="columns">
         <div class="column col-lg">
             <header class="navbar">
                 <div class="navbar-section">
                     <a href="{{ url_for('base.index') }}" class="navbar-brand mr-2">SeriesDB</a>
-                    <a class="btn btn-link" href="{{ url_for('series.index') }}">Series</a>
-                    <a class="btn btn-link" href="{{ url_for('rankinglists.index') }}">Ranking</a>
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">
+                            Series
+                        </a>
+                        <ul class="menu">
+                            <a class="btn btn-link" href="{{ url_for('series.index') }}">Browse series</a>
+                            <br>
+                            <a class="btn btn-link" href="{{ url_for('series.add') }}">Add series</a>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="btn btn-link dropdown-toggle" tabindex="0">Ranking</a>
+                        <ul class="menu">
+                            <a class="btn btn-link" href="{{ url_for('rankinglists.index') }}">Index</a>
+                            <br>
+                            <a class="btn btn-link" href="{{ url_for('rankinglists.add') }}">Add ranking</a>
+                        </ul>
+                    </div>
                 </div>
                 <div class="navbar-section">
-                    <a class="btn btn-primary" href="{{ url_for('secure.profile') }}">Logged in as {{ current_user.username }}</a>
+                    <a class="btn btn-primary" href="{{ url_for('secure.profile') }}">Logged in as {{
+                        current_user.username }}</a>
                     <a class="btn btn-secondary" href="{{ url_for('secure.logout') }}">Log out</a>
                 </div>
         </div>

@@ -1,7 +1,8 @@
-from .. import db
+from SB import db
 from datetime import datetime
-from .series import Series
+from SB.models.series import Series
 from SB.models import User
+
 
 class Rankinglist(db.Model):
     __tablename__ = 'rankinglist'

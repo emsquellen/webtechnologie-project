@@ -10,6 +10,7 @@ from base64 import b64encode
 # seasons
 # added_by
 
+
 class Series(db.Model):
     __tablename__ = 'series'
 
